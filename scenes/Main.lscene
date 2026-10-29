@@ -1,0 +1,472 @@
+{
+  "format": "linden-scene",
+  "version": 2,
+  "name": "Main",
+  "settings": {
+    "ambientColor": "#0f172a",
+    "ambientIntensity": 0.3,
+    "skybox": null,
+    "environment": "room",
+    "environmentIntensity": 1,
+    "backgroundBlurriness": 0,
+    "toneMapping": "agx",
+    "exposure": 1,
+    "fog": {
+      "enabled": false,
+      "color": "#c8d2dc",
+      "type": "exp2",
+      "near": 10,
+      "far": 120,
+      "density": 0.015
+    },
+    "shadowQuality": "medium",
+    "sun": {
+      "enabled": true,
+      "color": "#fff4e5",
+      "intensity": 2.5,
+      "direction": [
+        0.5,
+        1,
+        0.35
+      ]
+    },
+    "postFx": {
+      "enabled": false,
+      "ao": true,
+      "aoIntensity": 1,
+      "bloom": false,
+      "bloomStrength": 0.4,
+      "bloomThreshold": 0.9,
+      "bloomRadius": 0.4,
+      "antialias": "smaa"
+    }
+  },
+  "entities": [
+    {
+      "id": "ent-camera-2d",
+      "name": "Main Camera 2D",
+      "parentId": null,
+      "active": true,
+      "tags": [
+        "MainCamera"
+      ],
+      "components": [
+        {
+          "type": "Transform",
+          "data": {
+            "position": [
+              0,
+              0,
+              15
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "Camera",
+          "data": {
+            "far": 1000,
+            "isOrthographic": true,
+            "near": 0.1,
+            "orthoSize": 12
+          }
+        }
+      ],
+      "layer": 0,
+      "static": false
+    },
+    {
+      "id": "ent-light-dir",
+      "name": "Sun Light",
+      "parentId": null,
+      "active": true,
+      "tags": [],
+      "components": [
+        {
+          "type": "Transform",
+          "data": {
+            "position": [
+              2,
+              6,
+              12
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "Light",
+          "data": {
+            "color": "#ffffff",
+            "intensity": 2.2,
+            "type": "directional"
+          }
+        }
+      ],
+      "layer": 0,
+      "static": false
+    },
+    {
+      "id": "ent-light-amb",
+      "name": "Ambient Light",
+      "parentId": null,
+      "active": true,
+      "tags": [],
+      "components": [
+        {
+          "type": "Transform",
+          "data": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "Light",
+          "data": {
+            "color": "#38bdf8",
+            "intensity": 1,
+            "type": "ambient"
+          }
+        }
+      ],
+      "layer": 0,
+      "static": false
+    },
+    {
+      "id": "ent-galaxy-manager",
+      "name": "GalaxyWarManager",
+      "parentId": null,
+      "active": true,
+      "tags": [
+        "GameManager"
+      ],
+      "components": [
+        {
+          "type": "Transform",
+          "data": {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "HtmlUI",
+          "data": {
+            "mode": "screen",
+            "src": "ui/hud.html"
+          }
+        },
+        {
+          "type": "Script",
+          "data": {
+            "src": "scripts/CheckApi.ts",
+            "props": {}
+          }
+        }
+      ],
+      "layer": 0,
+      "static": false
+    },
+    {
+      "id": "ent-player",
+      "name": "PlayerSpaceship",
+      "parentId": null,
+      "active": true,
+      "tags": [
+        "Player"
+      ],
+      "components": [
+        {
+          "type": "Transform",
+          "data": {
+            "position": [
+              0,
+              -8,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "Model",
+          "data": {
+            "collider": "none",
+            "merge": true,
+            "parts": [
+              {
+                "id": "nose",
+                "material": {
+                  "color": "#0284c7",
+                  "metalness": 0.8,
+                  "roughness": 0.2
+                },
+                "position": [
+                  0,
+                  0.4,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 1.8,
+                  "radius": 0.5,
+                  "type": "cone"
+                }
+              },
+              {
+                "id": "canopy",
+                "material": {
+                  "color": "#38bdf8",
+                  "metalness": 0.9,
+                  "roughness": 0.1
+                },
+                "position": [
+                  0,
+                  0.1,
+                  0.25
+                ],
+                "scale": [
+                  0.8,
+                  1.4,
+                  0.7
+                ],
+                "shape": {
+                  "radius": 0.3,
+                  "type": "sphere"
+                }
+              },
+              {
+                "id": "hull",
+                "material": {
+                  "color": "#0f172a",
+                  "metalness": 0.6,
+                  "roughness": 0.3
+                },
+                "position": [
+                  0,
+                  -0.6,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 1.2,
+                  "radiusBottom": 0.65,
+                  "radiusTop": 0.5,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "id": "wing_l",
+                "material": {
+                  "color": "#0284c7",
+                  "metalness": 0.7,
+                  "roughness": 0.2
+                },
+                "position": [
+                  -0.95,
+                  -0.7,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  25
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    1.3,
+                    0.1,
+                    0.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "id": "wing_r",
+                "material": {
+                  "color": "#0284c7",
+                  "metalness": 0.7,
+                  "roughness": 0.2
+                },
+                "position": [
+                  0.95,
+                  -0.7,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  -25
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    1.3,
+                    0.1,
+                    0.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "id": "cannon_l",
+                "material": {
+                  "color": "#38bdf8",
+                  "metalness": 0.9,
+                  "roughness": 0.1
+                },
+                "position": [
+                  -1.45,
+                  -0.4,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 0.9,
+                  "radiusBottom": 0.06,
+                  "radiusTop": 0.06,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "id": "cannon_r",
+                "material": {
+                  "color": "#38bdf8",
+                  "metalness": 0.9,
+                  "roughness": 0.1
+                },
+                "position": [
+                  1.45,
+                  -0.4,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 0.9,
+                  "radiusBottom": 0.06,
+                  "radiusTop": 0.06,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "id": "thruster_l",
+                "material": {
+                  "color": "#f43f5e",
+                  "metalness": 0.5,
+                  "roughness": 0.2
+                },
+                "position": [
+                  -0.3,
+                  -1.3,
+                  0
+                ],
+                "shape": {
+                  "height": 0.4,
+                  "radiusBottom": 0.22,
+                  "radiusTop": 0.18,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "id": "thruster_r",
+                "material": {
+                  "color": "#f43f5e",
+                  "metalness": 0.5,
+                  "roughness": 0.2
+                },
+                "position": [
+                  0.3,
+                  -1.3,
+                  0
+                ],
+                "shape": {
+                  "height": 0.4,
+                  "radiusBottom": 0.22,
+                  "radiusTop": 0.18,
+                  "type": "cylinder"
+                }
+              }
+            ],
+            "placement": "free"
+          }
+        },
+        {
+          "type": "Script",
+          "data": {
+            "src": "scripts/PlayerController.ts",
+            "props": {}
+          }
+        }
+      ],
+      "layer": 0,
+      "static": false
+    }
+  ]
+}

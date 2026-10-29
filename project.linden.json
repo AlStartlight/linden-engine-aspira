@@ -1,0 +1,608 @@
+{
+  "name": "Aspira",
+  "version": "0.1.0",
+  "renderer": "webgpu",
+  "tags": [
+    "Player",
+    "Enemy",
+    "Pickup",
+    "Coin",
+    "Ground",
+    "Flying"
+  ],
+  "layers": [
+    "Default",
+    "TransparentFX",
+    "Ignore Raycast",
+    "",
+    "Water",
+    "UI",
+    "Player",
+    "Enemy"
+  ],
+  "collisionMatrix": [
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  ],
+  "input": {
+    "actions": [
+      {
+        "name": "Move",
+        "type": "vector2",
+        "bindings": [
+          "Gamepad/LeftStick",
+          "Touch/Joystick"
+        ],
+        "composites": [
+          {
+            "up": [
+              "Keyboard/KeyW"
+            ],
+            "down": [
+              "Keyboard/KeyS"
+            ],
+            "left": [
+              "Keyboard/KeyA"
+            ],
+            "right": [
+              "Keyboard/KeyD"
+            ]
+          },
+          {
+            "up": [
+              "Keyboard/ArrowUp"
+            ],
+            "down": [
+              "Keyboard/ArrowDown"
+            ],
+            "left": [
+              "Keyboard/ArrowLeft"
+            ],
+            "right": [
+              "Keyboard/ArrowRight"
+            ]
+          }
+        ],
+        "deadzone": 0.15
+      },
+      {
+        "name": "Turn",
+        "type": "axis",
+        "bindings": [],
+        "composites": [
+          {
+            "negative": [
+              "Keyboard/KeyQ",
+              "Gamepad/LeftShoulder"
+            ],
+            "positive": [
+              "Keyboard/KeyE",
+              "Gamepad/RightShoulder"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Vertical",
+        "type": "axis",
+        "bindings": [],
+        "composites": [
+          {
+            "negative": [
+              "Keyboard/KeyQ",
+              "Gamepad/LeftTrigger"
+            ],
+            "positive": [
+              "Keyboard/KeyE",
+              "Gamepad/RightTrigger"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Look",
+        "type": "vector2",
+        "bindings": [
+          "Mouse/Delta",
+          "Gamepad/RightStick",
+          "Touch/Look"
+        ],
+        "deadzone": 0.15,
+        "sensitivity": 1
+      },
+      {
+        "name": "Jump",
+        "type": "button",
+        "bindings": [
+          "Keyboard/Space",
+          "Gamepad/ButtonSouth"
+        ]
+      },
+      {
+        "name": "Sprint",
+        "type": "button",
+        "bindings": [
+          "Keyboard/ShiftLeft",
+          "Gamepad/LeftStickPress",
+          "Touch/Joystick"
+        ],
+        "pressThreshold": 0.9
+      },
+      {
+        "name": "Crouch",
+        "type": "button",
+        "bindings": [
+          "Keyboard/KeyC",
+          "Keyboard/ControlLeft",
+          "Gamepad/ButtonEast"
+        ]
+      },
+      {
+        "name": "Interact",
+        "type": "button",
+        "bindings": [
+          "Keyboard/KeyF",
+          "Gamepad/ButtonWest"
+        ]
+      },
+      {
+        "name": "Attack",
+        "type": "button",
+        "bindings": [
+          "Keyboard/Space",
+          "Keyboard/KeyJ",
+          "Mouse/LeftButton",
+          "Gamepad/ButtonSouth",
+          "Gamepad/RightTrigger",
+          "Touch/Button/Attack"
+        ]
+      },
+      {
+        "name": "Bomb",
+        "type": "button",
+        "bindings": [
+          "Keyboard/KeyE",
+          "Keyboard/KeyK",
+          "Keyboard/ShiftLeft",
+          "Mouse/RightButton",
+          "Gamepad/ButtonWest",
+          "Touch/Button/Bomb"
+        ]
+      }
+    ],
+    "touch": {
+      "enabled": "auto",
+      "joystick": {
+        "side": "left",
+        "mode": "floating",
+        "radius": 64
+      },
+      "look": {
+        "enabled": true,
+        "area": "right-half",
+        "sensitivity": 1
+      },
+      "opacity": 0.6,
+      "safeArea": true,
+      "scale": "auto",
+      "buttons": [
+        {
+          "id": "Attack",
+          "action": "Attack",
+          "label": "FIRE",
+          "icon": "shoot",
+          "behavior": "hold",
+          "anchor": "bottom-right",
+          "unit": "px",
+          "x": 24,
+          "y": 32,
+          "size": 72,
+          "color": "#e11d48",
+          "pressedColor": "#be123c"
+        },
+        {
+          "id": "TurnLeft",
+          "action": "Turn",
+          "value": -1,
+          "label": "Q",
+          "icon": "turn-left",
+          "anchor": "bottom-left",
+          "unit": "px",
+          "x": 24,
+          "y": 190,
+          "size": 44
+        },
+        {
+          "id": "TurnRight",
+          "action": "Turn",
+          "label": "E",
+          "icon": "turn-right",
+          "anchor": "bottom-left",
+          "unit": "px",
+          "x": 80,
+          "y": 190,
+          "size": 44
+        },
+        {
+          "id": "Bomb",
+          "action": "Bomb",
+          "label": "BOMB",
+          "icon": "attack",
+          "behavior": "tap",
+          "cooldown": 5,
+          "anchor": "bottom-right",
+          "unit": "px",
+          "x": 112,
+          "y": 48,
+          "size": 60,
+          "color": "#9333ea",
+          "pressedColor": "#7e22ce"
+        }
+      ]
+    }
+  },
+  "services": [],
+  "scenesInBuild": [
+    "scenes/Main.lscene"
+  ],
+  "exportPresets": [
+    {
+      "id": "preset-windows-desktop",
+      "name": "Windows Desktop",
+      "platform": "windows",
+      "backend": "linden",
+      "arch": [
+        "x64"
+      ],
+      "output": "build/windows/Aspira.exe",
+      "mode": "release",
+      "appName": "Aspira"
+    },
+    {
+      "id": "preset-macos-desktop",
+      "name": "macOS",
+      "platform": "macos",
+      "backend": "linden",
+      "arch": [
+        "universal"
+      ],
+      "output": "build/mac/Aspira.dmg",
+      "mode": "release",
+      "appName": "Aspira"
+    },
+    {
+      "id": "preset-linux-desktop",
+      "name": "Linux",
+      "platform": "linux",
+      "backend": "linden",
+      "arch": [
+        "x64"
+      ],
+      "output": "build/linux/Aspira.AppImage",
+      "mode": "release",
+      "appName": "Aspira"
+    },
+    {
+      "id": "preset-web-html5",
+      "name": "Web",
+      "platform": "web",
+      "backend": "linden",
+      "arch": [
+        "wasm"
+      ],
+      "output": "build/web/index.html",
+      "mode": "release",
+      "appName": "Aspira"
+    },
+    {
+      "id": "preset-android",
+      "name": "Android",
+      "platform": "android",
+      "backend": "godot",
+      "arch": [
+        "arm64"
+      ],
+      "output": "build/android/Aspira.apk",
+      "mode": "debug",
+      "appName": "Aspira"
+    },
+    {
+      "id": "preset-ios",
+      "name": "iOS",
+      "platform": "ios",
+      "backend": "godot",
+      "arch": [
+        "arm64"
+      ],
+      "output": "build/ios/Aspira.ipa",
+      "mode": "debug",
+      "appName": "Aspira"
+    }
+  ]
+}
